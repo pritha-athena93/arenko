@@ -12,15 +12,15 @@ Please send back your submission as a git repository or github link.
 1. S3 bucket for storing the tfstate is already created
 2. ACM is created outside of this tf config
 3. The region in use is enabled
-4. The user applying the changes has admin access or permission to create the resources created through this tf
-5. I added rds-db:connect to the ecs task role, although it doesn't need it right now, I enabled iam on the db, hence did it just to complete the config.
+4. The user applying the changes has admin access or permissions to create the resources in this config
+5. I added rds-db:connect to the ecs task role — it isn't needed right now, but since iam auth is enabled on the db, I added it to complete the solution
 
 # Steps to apply -
 
-1. Mention the var file location, ex - `terraform apply -var-file=environments/dev.tfvars.json` 
+1. Specify the var file location, ex - `terraform apply -var-file=environments/dev.tfvars.json`
 2. Add the relevant profile name - uncomment the profile line in main.tf
-3. For different region, the tfstate also needs to be stored in different paths - `terraform init -backend-config="key=environments/dev/terraform.tfstate"`
+3. For a different region, the tfstate also needs to be stored at a different path - `terraform init -backend-config="key=environments/dev/terraform.tfstate"`
 
 # DR -
 
-1. In prod we should do a pilot light or warm standby, but that requires more discussion on RTO.
+1. In prod we should do a pilot light or warm standby, but this requires further discussion on need, cost, RTO etc.
