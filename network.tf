@@ -195,7 +195,7 @@ resource "aws_security_group" "ecs-sgrp" {
   }
 
   egress {
-    description = "outbound via NAT — required for ECR pulls and AWS API calls"
+    description = "outbound via NAT - required for ECR pulls and AWS API calls"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
